@@ -1,0 +1,62 @@
+<h2>
+  Custom Scripts
+  <button ng-click="save()" class="btn btn-primary pull-right">Save</button>
+</h2>
+
+<h3>Environment</h3>
+<div class="row-fluid">
+  <div class="span12">
+    <textarea ui-refresh="selectedTab" ng-model="config.environment"></textarea>
+  </div>
+</div><br/>
+
+<h3>Arch</h3>
+<div class="row-fluid">
+  <div class="span12">
+    <p class="help-text">
+      Select <code>all</code> for architecture independent packages, or select <code>any</code> for architecture dependent.
+    </p>
+  </div>
+  <div class="span12">
+    <select ng-model="config.arch" ng-options="value for value in ['all', 'any']"></select>
+  </div>
+</div><br/>
+
+<h3>use uscan?</h3>
+<div class="row-fluid">
+  <div class="span12">
+    <p class="help-text">
+      Check this option if you have a <code>debian/watch</code> file and need to download upstream's source code.
+    </p>
+  </div>
+  <div class="span12">
+    <input type="checkbox" ng-model="config.useuscan" value="" checked>
+  </div>
+</div><br/>
+
+<h3>pdebuild custom flags</h3>
+<div class="row-fluid">
+  <div class="span12">
+    <p class="help-text">
+      This value will be appended to pdebuild. Use this if you need custom functionality.
+    </p>
+  </div>
+  <div class="span12">
+    <input type="text" ng-model="config.pdebuild" value="">
+  </div>
+</div><br/>
+
+<h3>piuparts custom flags</h3>
+<div class="row-fluid">
+  <div class="span12">
+    <p class="help-text">
+      This value will be appended to piuparts. Use this if you need custom functionality.
+    </p>
+  </div>
+  <div class="span12">
+    <input type="text" ng-model="config.piuparts" value="">
+  </div>
+</div><br/>
+
+
+<button ng-click="save()" class="btn btn-primary">Save</button>
