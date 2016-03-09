@@ -8,12 +8,6 @@ module.exports = {
 
     done(null, {
       environment: shellCommand(config.environment, config.shell, job),
-      // prepare: shellCommand((config.useuscan ? 'uscan --force-download && ':'') +
-      //                       'pdebuild -- --basetgz /var/lib/strider/chroot/' + config.basetgz,
-      //                       config.shell, job),
-      //test: shellCommand('sudo piuparts -d stable -b /var/lib/strider/chroot/' +
-      //                     config.basetgz + ' /var/lib/strider/chroot/result/$(/var/lib/strider/scripts/get-package-filename `pwd`)',
-      //			 config.shell, job),
       prepare: prepareCmd(config, job),
       test: testCmd(config, job),
       deploy: shellCommand(config.deploy, config.shell, job),
@@ -39,14 +33,13 @@ function prepareCmd(config, job){
 }
 
 function testCmd(config, job){
-  var cmd = '';
-  // cmd += 'sudo piuparts -d stable -b /var/lib/strider/chroot/' +
-    // config.basetgz + ' /var/lib/strider/chroot/result/$(/var/lib/strider/scripts/get-package-filename `pwd`)',
+  if (config.usepiuparts ){
+    var cmd = '';
+    var cmd_get_pkg_filename = '$('+dconf.chroots.get_pkg_filename+' `pwd`)';
+    cmd += 'sudo piuparts -d stable /var/lib/strider/chroot/result/'+cmd_get_pkg_filename;
 
-  var cmd_get_pkg_filename = '$('+dconf.chroots.get_pkg_filename+' `pwd`)';
-  cmd += 'sudo piuparts -d stable /var/lib/strider/chroot/result/'+cmd_get_pkg_filename;
-
-  return shellCommand(cmd, config.shell, job);
+    return shellCommand(cmd, config.shell, job);
+  }
 }
 
 function shellCommand(command, shell, job) {

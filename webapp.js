@@ -15,6 +15,7 @@ module.exports = {
           enum: ['all', 'any']},
       useuscan: { type: Boolean, default: true },
       pdebuild: { type: String, default: ''},
+      usepiuparts: { type: Boolean, default: true },
       piuparts: { type: String, default: ''},
       environment: { type: String, default: '' },
       prepare: { type: String, default: '' },
