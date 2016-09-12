@@ -1,5 +1,5 @@
 {
-  "name": "debian-packages",
+  "name": "strider-debian",
   "version": "0.0.2",
   "description": "Plugin to aid the creation of Debian Packages within Strider",
   "main": "index.js",
