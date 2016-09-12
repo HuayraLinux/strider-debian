@@ -1,1 +1,1 @@
-# strider-deb
+# strider-debian
