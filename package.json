@@ -6,7 +6,7 @@
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git://github.com/lvm/strider-deb.git"
+    "url": "https://github.com/HuayraLinux/strider-debian"
   },
   "keywords": [
     "strider"
