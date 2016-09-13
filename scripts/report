@@ -20,6 +20,8 @@ COMMIT=$(git rev-parse --short HEAD)
 VERSION=$(git describe --tags --always)
 LOG=$(git log --oneline -5 --color=always | sed "s/^/    /g")
 
+echo
+echo
 echo "Se ha completado la build de ${C}${PROJECT_NAME} ${N}${B}${VERSION} ${N}(${A}${PROJECT_URL}${N})" \
      "para subir este paquete puede usar el script ${B}\`debsign-remote\`${N}" \
      "ubicado en ${U}http://bugs.huayra.conectarigualdad.gob.ar/projects/huayra-gnu-linux/wiki/Strider${N}"
