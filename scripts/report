@@ -1,0 +1,26 @@
+#!/bin/bash
+# Si hay un error o se usa una variable no definida se termina la ejecución
+set -o errexit -o nounset
+
+# Vienen del entorno
+#   PROJECT_NAME, PROJECT_URL
+PROJECT_NAME="DEBUG"
+PROJECT_URL="https://github.com/debug/debug"
+
+COMMIT=$(git rev-parse HEAD)
+VERSION=$(git describe --tags)
+LOG=$(git log --oneline -5)
+echo "Se ha completado la build de ${PROJECT_NAME} ${VERSION} (${PROJECT_URL})"
+echo "    para subir este paquete puede usar el script `debsign-remote` ubicado en"
+echo "    http://bugs.huayra.conectarigualdad.gob.ar/projects/huayra-gnu-linux/wiki/Strider"
+echo
+echo "Una vez preparado su entorno ejecute `debsign-remote ${CHANGES_FILE}`"
+echo
+echo "Información extra:"
+echo "    Info del commit: ${PROJECT_URL}/commit/${COMMIT}"
+echo
+echo "Últimos cambios:"
+echo "${LOG}"
+echo
+echo "DEBUG (env):"
+echo $(env)
