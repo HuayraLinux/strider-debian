@@ -3,6 +3,9 @@
 # Si hay un error o se usa una variable no definida se termina la ejecución
 set -o errexit -o nounset
 
+# El gil de strider no dice que tipo de terminal es
+export TERM="linux"
+
 # Color
 N=$(tput sgr0)   # normal
 U=$(tput smul)   # subrayado
