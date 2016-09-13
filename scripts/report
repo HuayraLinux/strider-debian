@@ -7,9 +7,9 @@ set -o errexit -o nounset
 export TERM="linux"
 
 # Color
-N=$(tput sgr0)   # normal
-U=$(tput smul)   # subrayado
-B=$(tput bold)   # negrita/bold
+N=$(tput sgr0)    # normal
+U=$(tput smul)    # subrayado
+B=$(tput bold)    # negrita/bold
 C=$(tput setaf 6) # celeste/cian
 A=$(tput setaf 4) # azul
 
@@ -20,9 +20,9 @@ COMMIT=$(git rev-parse --short HEAD)
 VERSION=$(git describe --tags --always)
 LOG=$(git log --oneline -5 --color=always | sed "s/^/    /g")
 
-echo "Se ha completado la build de ${C}${PROJECT_NAME} ${N}${B}${VERSION} ${N}(${A}${PROJECT_URL}${N})"
-echo "    para subir este paquete puede usar el script ${B}\`debsign-remote\`${N} ubicado en"
-echo "    ${U}http://bugs.huayra.conectarigualdad.gob.ar/projects/huayra-gnu-linux/wiki/Strider${N}"
+echo "Se ha completado la build de ${C}${PROJECT_NAME} ${N}${B}${VERSION} ${N}(${A}${PROJECT_URL}${N})" \
+     "para subir este paquete puede usar el script ${B}\`debsign-remote\`${N}" \
+     "ubicado en ${U}http://bugs.huayra.conectarigualdad.gob.ar/projects/huayra-gnu-linux/wiki/Strider${N}"
 echo
 echo "Una vez preparado su entorno ejecute ${B}${C}\`debsign-remote ${CHANGES_FILE}\`${N}"
 echo
