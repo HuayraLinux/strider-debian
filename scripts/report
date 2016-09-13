@@ -16,7 +16,7 @@ A=$(tput setaf 4) # azul
 # Vienen del entorno
 #   PROJECT_NAME, PROJECT_URL, CHANGES_FILE
 
-COMMIT=$(git rev-parse HEAD)
+COMMIT=$(git rev-parse --short HEAD)
 VERSION=$(git describe --tags)
 LOG=$(git log --oneline -5 --color=always | sed "s/^/    /g")
 
