@@ -17,7 +17,7 @@ A=$(tput setaf 4) # azul
 #   PROJECT_NAME, PROJECT_URL, CHANGES_FILE
 
 COMMIT=$(git rev-parse --short HEAD)
-VERSION=$(git describe --tags)
+VERSION=$(git describe --tags --always)
 LOG=$(git log --oneline -5 --color=always | sed "s/^/    /g")
 
 echo "Se ha completado la build de ${C}${PROJECT_NAME} ${N}${B}${VERSION} ${N}(${A}${PROJECT_URL}${N})"
