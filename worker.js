@@ -13,6 +13,10 @@ module.exports = {
       deploy: shellCommand(config.deploy, config.shell, job),
       cleanup: cleanupCmd(config, job)
     });
+  },
+  autodetect: {
+    filename: 'debian/control',
+    exists: true
   }
 };
 
