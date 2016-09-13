@@ -43,7 +43,10 @@ function testCmd(config, job) {
 
 function cleanupCmd(config, job) {
   var cmd = '';
-  cmd += __dirname + '/scripts/report';
+  cmd += 'export PROJECT_NAME=' + job.project.display_name + '\n';
+  cmd += 'export PROJECT_URL=' + job.project.display_url + '\n';
+  cmd += 'export CHANGES_FILE=$(' + __dirname + '/scripts/get-package-filename `pwd`)\n';
+  cmd += __dirname + '/scripts/report\n';
   return shellCommand(cmd, config.shell, job);
 }
 
