@@ -2,17 +2,11 @@
 
 DIR=$1
 
-# Buscamos el nombre del Source package,
-# quitamos los espacios y listamos todos
-# los SourcePackages que tengan un archivo
-# .build por orden de modificacion DESC,
-# finalmente nos quedamos con el primero.
+# Buscamos el nombre del Source package, quitamos los espacios y listamos todos los SourcePackages que
+# tengan un archivo .build por orden de modificacion DESC, nos quedamos con el primero.
+BUILD_FILE=`ls -t $DIR/../$(grep ^Source $DIR/debian/control|cut -d ':' -f2|sed -s 's, ,,')*.build|sed q`
 
-BUILD_FILE=`ls -t $(grep ^Source $DIR/debian/control|cut -d ':' -f2|sed -s 's, ,,')*.build|sed q`;
-
-# Una vez obtenido el .build, lo reemplazamos
-# por el .changes, que es el que necesitamos
-CHANGES_FILE=`basename $(echo $BUILD_FILE|sed -s 's,.build$,.changes,')`;
+# Una vez obtenido el .build, lo reemplazamos por el .changes, que es el que necesitamos
+CHANGES_FILE=`basename $(echo $BUILD_FILE|sed -s 's,.build$,.changes,')`
 
 echo $CHANGES_FILE;
-

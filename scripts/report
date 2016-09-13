@@ -4,9 +4,6 @@ set -o errexit -o nounset
 
 # Vienen del entorno
 #   PROJECT_NAME, PROJECT_URL, CHANGES_FILE
-PROJECT_NAME="DEBUG"
-PROJECT_URL="https://github.com/debug/debug"
-CHANGES_FILE="sarasa"
 
 COMMIT=$(git rev-parse HEAD)
 VERSION=$(git describe --tags)
