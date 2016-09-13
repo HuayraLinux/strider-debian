@@ -1,6 +1,14 @@
 #!/bin/bash
+
 # Si hay un error o se usa una variable no definida se termina la ejecución
 set -o errexit -o nounset
+
+# Color
+N=$(tput sgr0)   # normal
+U=$(tput smul)   # subrayado
+B=$(tput bold)   # negrita/bold
+C=$(tput setf 6) # celeste/cian
+A=$(tput setf 4) # azul
 
 # Vienen del entorno
 #   PROJECT_NAME, PROJECT_URL, CHANGES_FILE
@@ -8,17 +16,15 @@ set -o errexit -o nounset
 COMMIT=$(git rev-parse HEAD)
 VERSION=$(git describe --tags)
 LOG=$(git log --oneline -5)
-echo "Se ha completado la build de ${PROJECT_NAME} ${VERSION} (${PROJECT_URL})"
-echo "    para subir este paquete puede usar el script \`debsign-remote\` ubicado en"
-echo "    http://bugs.huayra.conectarigualdad.gob.ar/projects/huayra-gnu-linux/wiki/Strider"
+
+echo "Se ha completado la build de ${C}${PROJECT_NAME} ${N}${B}${VERSION} ${N}(${B}${PROJECT_URL}${N})"
+echo "    para subir este paquete puede usar el script \${B}`debsign-remote\`${N} ubicado en"
+echo "    ${U]http://bugs.huayra.conectarigualdad.gob.ar/projects/huayra-gnu-linux/wiki/Strider${N}"
 echo
-echo "Una vez preparado su entorno ejecute \`debsign-remote ${CHANGES_FILE}\`"
+echo "Una vez preparado su entorno ejecute \${B}${C}`debsign-remote ${CHANGES_FILE}\`${N}"
 echo
 echo "Información extra:"
-echo "    Info del commit: ${PROJECT_URL}/commit/${COMMIT}"
+echo "    Info del commit: ${U}${PROJECT_URL}/commit/${COMMIT}${N}"
 echo
 echo "Últimos cambios:"
 echo "${LOG}"
-echo
-echo "DEBUG (env):"
-echo $(env)
