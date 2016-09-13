@@ -43,7 +43,7 @@ function testCmd(config, job) {
 
 function cleanupCmd(config, job) {
   var cmd = '';
-  cmd += __dirname + 'script/report';
+  cmd += __dirname + '/script/report';
   return shellCommand(cmd, config.shell, job);
 }
 
