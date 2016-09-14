@@ -22,7 +22,7 @@ module.exports = {
 
 
 function prepareCmd(config, job) {
-  var cmd = (config.useuscan ? 'uscan --force-download && ':'');
+  var cmd = (config.useuscan ? 'uscan --download-current-version && ':'');
 
   // by default, 64b is the preferred arch
   if(config.arch === 'all') {
